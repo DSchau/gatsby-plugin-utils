@@ -8,6 +8,8 @@ async function main() {
 
   const packageVersions = hits.reduce((merged, hit) => {
     try {
+      // order matters here
+      // peerDependencies will "win out", then dependencies, then devDependencies
       const deps = Object.assign({}, hit.devDependencies, hit.dependencies, hit.peerDependencies)
       const dep = deps.gatsby
       const ranges = [
