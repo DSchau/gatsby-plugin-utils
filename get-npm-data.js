@@ -34,7 +34,9 @@ module.exports = async () => {
           return axios(`https://registry.npmjs.org/${pkg.name}/${pkg.version}`)
             .then(res => {
               return Object.assign({}, res.data, {
-                description: pkg.description.replace(/,/g, '","'),
+                description: pkg.description
+                  .replace(/,/g, '","')
+                  .replace(/\n/g, ' '),
                 downloads: pkg.downloadsLast30Days,
                 lastUpdated: new Date(pkg.modified)
               })
