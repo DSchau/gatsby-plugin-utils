@@ -8,7 +8,7 @@ async function main() {
 
   const packageVersions = hits.reduce((merged, hit) => {
     try {
-      const deps = Object.assign({}, hit.dependencies, hit.devDependencies, hit.peerDependencies)
+      const deps = Object.assign({}, hit.devDependencies, hit.dependencies, hit.peerDependencies)
       const dep = deps.gatsby
       const ranges = [
         ['1.9.9', '1'],
