@@ -41,6 +41,7 @@ async function main() {
           if (semver.satisfies(version, dep)) {
             merged[versionName].push(pkg);
             added = true;
+            break;
           }
         }
 
